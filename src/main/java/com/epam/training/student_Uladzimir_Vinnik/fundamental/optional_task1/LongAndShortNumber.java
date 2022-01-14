@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**Найти самое короткое и самое длинное число. Вывести найденные числа и их длину.**/
+
 public class LongAndShortNumber {
 
     public static void run() throws IOException {
