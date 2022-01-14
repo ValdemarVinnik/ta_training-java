@@ -1,4 +1,4 @@
-package main_task;
+package com.epam.training.student_Uladzimir_Vinnik.fundamental.main_task;
 
 import java.io.BufferedReader;
 import java.io.IOException;

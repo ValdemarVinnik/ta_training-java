@@ -1,4 +1,4 @@
-package main_task;
+package com.epam.training.student_Uladzimir_Vinnik.fundamental.main_task;
 
 public class ReversArgs {
     public static void main(String[] args) {
