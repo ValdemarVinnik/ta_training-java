@@ -5,11 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Вывести на консоль те числа,
- * длина которых меньше (больше) средней длины по всем числам, а также длину.
- **/
-
-public class AboveOrBelowAveragePrinter {
+ * Найти число, в котором количество различных цифр минимально.
+ * Если таких чисел несколько, найти первое из них.
+ */
+public class SearcherOfMinimalDifferentDigitsInNumbers {
 
     public static void run() throws IOException {
         printMessage("How many digits do you want to enter? :");
@@ -23,11 +22,10 @@ public class AboveOrBelowAveragePrinter {
 
         int[] numbersArray = collectNumbers(Integer.parseInt(stringNumber));
 
-        printMessage("\nThe numbers are longer then average  :");
-        printNumbersLongerThenAverage(searchOfNumbersAverageLength(numbersArray), numbersArray);
+        printMessage("\nA number with a minimum number of distinct digits  :");
+        String resultMessage = String.valueOf(getNumberWithMinimalDifferentDigits(numbersArray,getMinimalDifferentDigits(numbersArray)));
+        printMessage(resultMessage);
 
-        printMessage("\nThe numbers are shorter then average  :");
-        printNumbersShortestThenAverage(searchOfNumbersAverageLength(numbersArray), numbersArray);
     }
 
     private static void printMessage(String message) {
@@ -65,39 +63,50 @@ public class AboveOrBelowAveragePrinter {
         return numbers;
     }
 
-    private static int searchOfNumbersAverageLength(int[] array) {
-        int sum = 0;
-        for (int each : array) {
-            sum = sum + countOfLength(each);
-        }
+    private static int countOfDifferentDigits(int number) {
+        int numberForCheck;
+        int counterOfDifferent = 0;
 
-        return sum / array.length;
+        for (int i = 0; i < 10; i++) {
+
+            numberForCheck = number;
+
+            while (numberForCheck > 0) {
+
+                if (i == numberForCheck % 10) {
+                    counterOfDifferent++;
+                    break;
+                }
+                numberForCheck = numberForCheck / 10;
+            }
+
+        }
+        return counterOfDifferent;
     }
 
-    private static int countOfLength(int number) {
-        int count = 0;
-        while (number > 0) {
-            number = number / 10;
-            count++;
+    private static int getMinimalDifferentDigits(int[] array) {
+        int minimalDifferentDigits = countOfDifferentDigits(array[0]);
+
+        for (int each : array) {
+            if (minimalDifferentDigits > countOfDifferentDigits(each)) {
+                minimalDifferentDigits = countOfDifferentDigits(each);
+            }
+
         }
-        return count;
+        return minimalDifferentDigits;
     }
 
-    private static void printNumbersLongerThenAverage(int average, int[] array) {
-        for (int each : array) {
-            if (countOfLength(each) >= average)
-                printMessage(String.format("%d their length %d; ", each, countOfLength(each)));
+    private static int getNumberWithMinimalDifferentDigits(int[] array, int minimal){
+        for (int each: array){
+            if (countOfDifferentDigits(each) == minimal){
+                return each;
+            }
         }
-    }
-
-    private static void printNumbersShortestThenAverage(int average, int[] array) {
-        for (int each : array) {
-            if (countOfLength(each) < average)
-                printMessage(String.format("%d their length %d; ", each, countOfLength(each)));
-        }
+        return 0;
     }
 
     public static void main(String[] args) throws IOException {
         run();
     }
+
 }
