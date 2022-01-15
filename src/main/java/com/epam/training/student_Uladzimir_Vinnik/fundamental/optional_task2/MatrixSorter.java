@@ -93,7 +93,7 @@ public class MatrixSorter {
 
     private static int createNumber(int boundary) {
         Random random = new Random();
-        return random.nextInt(boundary * 2) - boundary;
+        return random.nextInt((boundary+1) * 2) - boundary;
     }
 
     private static void printMatrix(int[][] matrix){
