@@ -22,6 +22,8 @@ public class StudentsDataBase {
         students.addAll(studentList);
     }
 
+    public List<Student> getBase(){return students;}
+
     public List<Student> listOfStudentsFromFaculty(String faculty){
         List<Student> returnList = new ArrayList<Student>();
 
@@ -58,5 +60,11 @@ public class StudentsDataBase {
 
     public List<Student> listOfStudentsBornAfterDate(){
         return null;
+    }
+
+    public void printBase(){
+        for (Student each: students){
+            System.out.println(each);
+        }
     }
 }

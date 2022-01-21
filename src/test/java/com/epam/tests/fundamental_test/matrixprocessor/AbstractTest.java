@@ -1,4 +1,4 @@
-package matrixprocessor;
+package com.epam.tests.fundamental_test.matrixprocessor;
 
 
 import com.epam.training.student_Uladzimir_Vinnik.fundamental.matrix_processor.IMatrixProcessor;

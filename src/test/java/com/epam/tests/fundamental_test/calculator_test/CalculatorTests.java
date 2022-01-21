@@ -1,4 +1,4 @@
-package com.epam.tests.calculator_test;
+package com.epam.tests.fundamental_test.calculator_test;
 
 
 import com.epam.training.student_Uladzimir_Vinnik.fundamental.calculator.ICalculator;

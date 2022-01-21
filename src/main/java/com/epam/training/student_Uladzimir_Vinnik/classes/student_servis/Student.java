@@ -1,6 +1,9 @@
 package com.epam.training.student_Uladzimir_Vinnik.classes.student_servis;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Student{
     private String id;
@@ -13,13 +16,13 @@ public class Student{
     private String curse;
     private String group;
 
-    public Student(String id, String name, String secondName, String patronymic, Date dateOfBirth,
-                   String fonNumber, String faculty, String curse, String group) {
+    public Student(String id, String name, String secondName, String patronymic, String dateOfBirth,
+                   String fonNumber, String faculty, String curse, String group) throws ParseException {
         this.id = id;
         this.name = name;
         this.secondName = secondName;
         this.patronymic = patronymic;
-        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirth = new SimpleDateFormat("dd.MM.yyyy").parse(dateOfBirth);
         this.fonNumber = fonNumber;
         this.faculty = faculty;
         this.curse = curse;
@@ -66,8 +69,8 @@ public class Student{
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setDateOfBirth(String dateOfBirth) throws ParseException {
+        this.dateOfBirth = new SimpleDateFormat("dd.MM.YY").parse(dateOfBirth);
     }
 
     public String getFonNumber() {
@@ -104,17 +107,9 @@ public class Student{
 
     @Override
     public String toString() {
-        return "Student{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", secondName='" + secondName + '\'' +
-                ", patronymic='" + patronymic + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", fonNumber='" + fonNumber + '\'' +
-                ", faculty='" + faculty + '\'' +
-                ", curse='" + curse + '\'' +
-                ", group='" + group + '\'' +
-                '}';
+
+        return String.format("%s  %s  %s  %s  id: %s  Facultet:%s   Grup:%s     Curse: %s   f.:%s",
+                name,secondName,patronymic,dateOfBirth,id,faculty,group,curse,fonNumber);
     }
 
 

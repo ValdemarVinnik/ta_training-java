@@ -1,4 +1,4 @@
-package matrixprocessor;
+package com.epam.tests.fundamental_test.matrixprocessor;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
