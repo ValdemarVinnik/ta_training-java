@@ -1,6 +1,9 @@
 package com.epam.training.student_Uladzimir_Vinnik.classes.student_servis;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class StudentsDataBase {
@@ -58,8 +61,15 @@ public class StudentsDataBase {
         return returnList;
     }
 
-    public List<Student> listOfStudentsBornAfterDate(){
-        return null;
+    public List<Student> listOfStudentsBornAfterDate(String date) throws ParseException {
+        List<Student> returnList = new ArrayList<Student>();
+        Date controlDate = new SimpleDateFormat("dd.MM.yyyy").parse(date);
+        for (Student each: students ) {
+            if (each.getDateOfBirth().getTime() > controlDate.getTime()){
+                returnList.add(each);
+            }
+        }
+        return returnList;
     }
 
     public void printBase(){
