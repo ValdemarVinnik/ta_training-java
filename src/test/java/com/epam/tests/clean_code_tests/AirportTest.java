@@ -10,11 +10,14 @@ import com.epam.training.student_Uladzimir_Vinnik.clean_code.aircompany.models.C
 import com.epam.training.student_Uladzimir_Vinnik.clean_code.aircompany.models.ExperimentalTypes;
 import com.epam.training.student_Uladzimir_Vinnik.clean_code.aircompany.models.MilitaryType;
 import lombok.extern.log4j.Log4j2;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.testng.Assert;
+
 import java.util.Arrays;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @Log4j2
 public class AirportTest {
@@ -87,7 +90,9 @@ public class AirportTest {
                 new MilitaryPlane("B-1B Lancer", 1050, 21000, 80000, MilitaryType.BOMBER),
                 new MilitaryPlane("B-52 Stratofortress", 1000, 20000, 80000, MilitaryType.BOMBER));
 
-        assertEquals( expectedBomberMilitaryPlanes,actualBomberMilitaryPlanes);
+        System.out.println(expectedBomberMilitaryPlanes);
+        System.out.println(actualBomberMilitaryPlanes);
+        Assert.assertEquals(expectedBomberMilitaryPlanes, actualBomberMilitaryPlanes);
     }
 
     @Test
