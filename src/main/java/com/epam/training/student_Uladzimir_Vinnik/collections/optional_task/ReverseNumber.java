@@ -1,16 +1,14 @@
 package com.epam.training.student_Uladzimir_Vinnik.collections.optional_task;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
+
+/**
+ * Ввести число, занести его цифры в стек. Вывести число, у которого цифры идут в обратном порядке.
+ */
 public class ReverseNumber {
 
     private static String getNumberFromConsole() throws IOException {
@@ -34,13 +32,18 @@ public class ReverseNumber {
         }
     }
 
-    private static ArrayDeque<String> createDeque(String number) {
-
-        return number.lines().collect(Collectors.toCollection(ArrayDeque::new));
+    private static ArrayDeque<Integer> createDeque(String number) {
+        ArrayDeque<Integer> stek = new ArrayDeque<>();
+       for (String letter : number.split("")){
+            stek.push(Integer.valueOf(letter));
+       }
+        return stek;
     }
 
-    private  static void printReversDeque(ArrayDeque<String> deque){
-        deque.stream().forEach(System.out::print);
+    private static void printReversDeque(ArrayDeque<Integer> deque) {
+        while (!deque.isEmpty()){
+            System.out.print(deque.pop());
+        }
     }
 
     public static void main(String[] args) throws IOException {
