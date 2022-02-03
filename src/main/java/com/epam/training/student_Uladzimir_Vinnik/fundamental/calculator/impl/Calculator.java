@@ -3,6 +3,7 @@ package com.epam.training.student_Uladzimir_Vinnik.fundamental.calculator.impl;
 import com.epam.training.student_Uladzimir_Vinnik.fundamental.calculator.ICalculator;
 import org.apache.commons.math3.util.Precision;
 
+
 public class Calculator implements ICalculator {
 
     private int precision;
