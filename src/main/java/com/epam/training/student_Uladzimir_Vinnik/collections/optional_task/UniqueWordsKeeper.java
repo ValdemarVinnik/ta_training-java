@@ -22,7 +22,7 @@ public class UniqueWordsKeeper {
     private static Set<String> convertToSet(String string){
         Set<String> set = new HashSet<>();
         if(string != null){
-            set.addAll(Arrays.asList(string.replace("\\.\\,","").split(" ")));
+            set.addAll(Arrays.asList(string.split("\\W+")));
         }
         return set;
     }
