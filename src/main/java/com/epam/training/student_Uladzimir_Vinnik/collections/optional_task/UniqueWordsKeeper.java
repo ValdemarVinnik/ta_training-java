@@ -5,6 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * Э''
+ */
 public class UniqueWordsKeeper {
     private static final String FILE_PATH = "src/test/resources/FileWithEnglishText.text";
 
