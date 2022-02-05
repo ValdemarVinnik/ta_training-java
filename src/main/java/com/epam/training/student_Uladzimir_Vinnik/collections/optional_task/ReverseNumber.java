@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
+import java.util.Collection;
+import java.util.Stack;
 
 
 /**
@@ -32,17 +34,17 @@ public class ReverseNumber {
         }
     }
 
-    private static ArrayDeque<Integer> createDeque(String number) {
-        ArrayDeque<Integer> stek = new ArrayDeque<>();
+    private static Stack<Integer> createDeque(String number) {
+        Stack<Integer> stack = new Stack<>();
        for (String letter : number.split("")){
-            stek.push(Integer.valueOf(letter));
+            stack.push(Integer.valueOf(letter));
        }
-        return stek;
+        return stack;
     }
 
-    private static void printReversDeque(ArrayDeque<Integer> deque) {
-        while (!deque.isEmpty()){
-            System.out.print(deque.pop());
+    private static void printReversDeque(Stack<Integer> stack) {
+        while (!stack.isEmpty()){
+            System.out.print(stack.pop());
         }
     }
 

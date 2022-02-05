@@ -3,16 +3,12 @@ package com.epam.training.student_Uladzimir_Vinnik.collections.optional_task;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
-/***
- * Ввести строки из файла, записать в список ArrayList.
- * Выполнить сортировку строк, используя метод sort() из класса Collections.
+/**
+ * Занести стихотворение в список. Провести сортировку по возрастанию длин строк.
  */
-public class ListSorterFromFile {
+public class ListByLinesLengthSorter {
     private static final String FILE_PATH = "src/test/resources/Song.txt";
 
     private static List<String> getDataFromTheFile(String filePath) throws IOException {
@@ -20,15 +16,15 @@ public class ListSorterFromFile {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
 
             while (bufferedReader.ready()) {
-                list.add(bufferedReader.readLine());
+                list.add(bufferedReader.readLine().trim());
             }
             return list;
         }
     }
 
-    private static List<String> getSortingList(List<String> list) {
-        Collections.sort(list);
-        return list;
+    private static List<String> sortByLength(List<String> list){
+        list.sort(Comparator.comparing(String::length));
+         return list;
     }
 
     private static void printList(Collection<String> list) {
@@ -36,6 +32,8 @@ public class ListSorterFromFile {
     }
 
     public static void main(String[] args) throws IOException {
-        printList(getSortingList(getDataFromTheFile(FILE_PATH)));
+        List<String> list = getDataFromTheFile(FILE_PATH);
+        printList(sortByLength(list));
+
     }
 }

@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/***
+ *  Создать список из элементов каталога и его подкаталогов.
+ */
 
 public class ListOfFiles {
     private static final String DIRECTORY_PATH = "src/main/java/com/epam/training/student_Uladzimir_Vinnik";
