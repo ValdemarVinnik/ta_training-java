@@ -55,7 +55,6 @@ public class ListProcessor implements IListProcessor {
         if (list == null) throw new ListProcessorException("The list is null...");
         if (list.size() < 1) throw new ListProcessorException("The list is wrong...");
 
-
         list.sort(Comparator.comparingInt(String::length));
         return list;
     }
