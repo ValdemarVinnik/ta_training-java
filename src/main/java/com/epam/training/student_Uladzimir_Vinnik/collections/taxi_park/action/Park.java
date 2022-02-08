@@ -1,4 +1,4 @@
-package com.epam.training.student_Uladzimir_Vinnik.collections.taxi_park.cars.action;
+package com.epam.training.student_Uladzimir_Vinnik.collections.taxi_park.action;
 
 import com.epam.training.student_Uladzimir_Vinnik.collections.taxi_park.cars.Transport;
 
