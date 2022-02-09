@@ -5,6 +5,7 @@ import com.epam.training.student_Uladzimir_Vinnik.collections.taxi_park.cars.Tra
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Park {
    private List<? extends Transport> taxiPark;
@@ -29,4 +30,19 @@ public class Park {
        // if (taxiPark.size() == 0)
         return (int)taxiPark.stream().map(Transport::getCost).count();
     }
+    public List<? extends Transport> getTaxiParkBySpeed(int minSpeed, int maxSpeed){
+       return taxiPark.stream().filter((t)-> t.getMaxSpeed() >= minSpeed && t.getMaxSpeed() <= maxSpeed)
+               .collect(Collectors.toList());
+    }
+
+    public List<? extends Transport> getTaxiParkByFuelConsumption(int minSpeed, int maxSpeed){
+        return taxiPark.stream().filter((t)-> t.getFuelConsumptionForHundred() >= minSpeed && t.getFuelConsumptionForHundred() <= maxSpeed)
+                .collect(Collectors.toList());
+    }
+
+    public void sortingTaxiParkByFuelConsumption(){
+       taxiPark = taxiPark.stream().sorted((t1,t2)-> (int) (t1.getFuelConsumptionForHundred()-t2.getFuelConsumptionForHundred()))
+               .collect(Collectors.toList());
+    }
+
 }
