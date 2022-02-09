@@ -3,16 +3,23 @@ package com.epam.training.student_Uladzimir_Vinnik.collections.taxi_park.cars;
 import java.util.Objects;
 
 public abstract class Transport {
+    private String model;
     private int cost;
     private String registrationNumber;
     private int maxSpeed;
     private double fuelConsumptionForHundred;
 
-    public Transport(int cost, String registrationNumber, int maxSpeed, double fuelConsumptionForHundred) {
+    public Transport(String model, int cost, String registrationNumber,
+                     int maxSpeed, double fuelConsumptionForHundred) {
+        this.model = model;
         this.cost = cost;
         this.registrationNumber = registrationNumber;
         this.maxSpeed = maxSpeed;
         this.fuelConsumptionForHundred = fuelConsumptionForHundred;
+    }
+
+    public String getModel() {
+        return model;
     }
 
     public int getCost() {
@@ -33,8 +40,9 @@ public abstract class Transport {
 
     @Override
     public String toString() {
-        return "Taxi{" +
-                "cost=" + cost +
+        return "Transport{" +
+                "model='" + model + '\'' +
+                ", cost=" + cost +
                 ", registrationNumber='" + registrationNumber + '\'' +
                 ", maxSpeed=" + maxSpeed +
                 ", fuelConsumptionForHundred=" + fuelConsumptionForHundred +
@@ -46,13 +54,14 @@ public abstract class Transport {
         if (this == o) return true;
         if (!(o instanceof Transport)) return false;
         Transport transport = (Transport) o;
-        return  getMaxSpeed() == transport.getMaxSpeed() &&
-                Double.compare(transport.getFuelConsumptionForHundred(), getFuelConsumptionForHundred()) == 0;
-
+        return getCost() == transport.getCost() &&
+                getMaxSpeed() == transport.getMaxSpeed() &&
+                Double.compare(transport.getFuelConsumptionForHundred(), getFuelConsumptionForHundred()) == 0 &&
+                getModel().equals(transport.getModel());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCost(), getRegistrationNumber(), getMaxSpeed(), getFuelConsumptionForHundred());
+        return Objects.hash(getModel(), getCost(), getRegistrationNumber(), getMaxSpeed(), getFuelConsumptionForHundred());
     }
 }

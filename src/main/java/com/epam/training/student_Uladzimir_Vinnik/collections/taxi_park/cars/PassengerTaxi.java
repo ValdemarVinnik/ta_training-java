@@ -8,9 +8,9 @@ public class PassengerTaxi extends Transport {
     private TypeOfTransport type;
     private int passengerCapacity;
 
-    public PassengerTaxi(int cost, String registrationNumber, int maxSpeed, double fuelConsumptionForHundred,
+    public PassengerTaxi(String model,int cost, String registrationNumber, int maxSpeed, double fuelConsumptionForHundred,
                          TypeOfTransport type, int passengerCapacity) {
-        super(cost, registrationNumber, maxSpeed, fuelConsumptionForHundred);
+        super(model,cost, registrationNumber, maxSpeed, fuelConsumptionForHundred);
         this.type = type;
         this.passengerCapacity = passengerCapacity;
     }
