@@ -1,5 +1,7 @@
 package com.epam.training.student_Uladzimir_Vinnik.collections.taxi_park.action;
 
+import com.epam.training.student_Uladzimir_Vinnik.collections.taxi_park.action.exception.DataSubmissionException;
+import com.epam.training.student_Uladzimir_Vinnik.collections.taxi_park.cars.CargoTaxi;
 import com.epam.training.student_Uladzimir_Vinnik.collections.taxi_park.cars.Transport;
 
 import java.io.BufferedReader;
@@ -35,9 +37,18 @@ public class DownloaderParkFromFile {
             case ("TRACK"):return null;
             case ("MINIVAN"):return null;
             default: return null;
-
-
         }
+    }
+
+    private static Transport createCargoTransport(String[] dataArray){
+        String name = dataArray[0].trim();
+        int cost;
+        try {
+            cost = Integer.parseInt(dataArray[1]);
+        }catch (Exception e){
+            throw new DataSubmissionException("Cost information is incorrect...");
+        }
+        return null;
     }
 
     private static Transport getDeserializableCar(String data){
