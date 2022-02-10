@@ -26,7 +26,7 @@ public class PassengerTaxi extends Transport {
     @Override
     public String toString() {
         return super.toString().replace("}",
-                "type=" + type +
+                " type=" + type +
                 ", passengerCapacity=" + passengerCapacity +
                 '}');
     }
