@@ -31,7 +31,6 @@ public class Park {
     }
 
     public int getCostOfAllPark() {
-        // if (taxiPark.size() == 0)
         return (int) taxiPark.stream().map(Transport::getCost).count();
     }
 
@@ -40,8 +39,9 @@ public class Park {
                 .collect(Collectors.toList());
     }
 
-    public List<Transport> getTaxiParkByFuelConsumption(int minSpeed, int maxSpeed) {
-        return taxiPark.stream().filter((t) -> t.getFuelConsumptionForHundred() >= minSpeed && t.getFuelConsumptionForHundred() <= maxSpeed)
+    public List<Transport> getTaxiParkByFuelConsumption(int minFuelConsumption, int maxFuelConsumption) {
+        return taxiPark.stream().filter((t) -> t.getFuelConsumptionForHundred() >= minFuelConsumption &&
+                t.getFuelConsumptionForHundred() <= maxFuelConsumption)
                 .collect(Collectors.toList());
     }
 
