@@ -117,7 +117,7 @@ public class ApplicationTaxiPark {
                 Integer.parseInt(maxConsumption)));
     }
 
-    public static void run() throws IOException {
+    public static void run() throws IOException, InterruptedException {
         boolean isLive = true;
 
         while (isLive) {
@@ -126,13 +126,15 @@ public class ApplicationTaxiPark {
 
             String stringNumber = getDataFromConsole();
             if (isANumberFromRange(stringNumber, 5)) {
+                cleanConsole();
                 isLive = chooseMethod(stringNumber);
+                Thread.sleep(2000);
             }
             cleanConsole();
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         run();
     }
 

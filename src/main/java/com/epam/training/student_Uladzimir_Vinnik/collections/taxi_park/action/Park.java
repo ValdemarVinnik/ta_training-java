@@ -5,6 +5,7 @@ import com.epam.training.student_Uladzimir_Vinnik.collections.taxi_park.cars.Tra
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class Park {
@@ -30,8 +31,10 @@ public class Park {
         cars.forEach(System.out::println);
     }
 
-    public int getCostOfAllPark() {
-        return (int) taxiPark.stream().map(Transport::getCost).count();
+    public long getCostOfAllPark() {
+        AtomicInteger cost = new AtomicInteger();
+          taxiPark.forEach((t) -> cost.addAndGet(t.getCost()));
+          return cost.get();
     }
 
     public List<Transport> getTaxiParkBySpeed(int minSpeed, int maxSpeed) {

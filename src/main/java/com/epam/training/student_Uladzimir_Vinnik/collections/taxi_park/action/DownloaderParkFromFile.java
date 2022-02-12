@@ -23,9 +23,10 @@ public class DownloaderParkFromFile {
             Transport transport;
             while (bufferedReader.ready()) {
                 transport = getDeserializableCar(bufferedReader.readLine());
-                if (transport != null){list.add(transport);}
+                if (transport != null) {
+                    list.add(transport);
+                }
             }
-
         }
     }
 
@@ -34,9 +35,9 @@ public class DownloaderParkFromFile {
         return list;
     }
 
-    private static Transport createTransport(String[] dataArray){
+    private static Transport createTransport(String[] dataArray) {
         String typeOfTransport = dataArray[5].trim().toUpperCase();
-        switch (typeOfTransport){
+        switch (typeOfTransport) {
             case ("SEDAN"):
             case ("PASSENGER_BUS"):
             case ("MINIVAN"):
@@ -44,17 +45,18 @@ public class DownloaderParkFromFile {
             case ("CARGO_BUS"):
             case ("TRUCK"):
                 return createCargoTransport(dataArray);
-            default: return null;
+            default:
+                return null;
         }
     }
 
-    private static Transport createCargoTransport(String[] dataArray){
+    private static Transport createCargoTransport(String[] dataArray) {
         String name = dataArray[0].trim();
 
         int cost;
         try {
             cost = Integer.parseInt(dataArray[1].trim());
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new DataSubmissionException("Cost information is incorrect...");
         }
 
@@ -63,41 +65,40 @@ public class DownloaderParkFromFile {
         int maxSpeed;
         try {
             maxSpeed = Integer.parseInt(dataArray[3].trim());
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new DataSubmissionException("Registration number information is incorrect...");
         }
 
         double fuelConsumption;
         try {
             fuelConsumption = Double.parseDouble(dataArray[4].trim());
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new DataSubmissionException("Fuel consumption information is incorrect...");
         }
 
         TypeOfTransport typ;
         try {
             typ = TypeOfTransport.valueOf(dataArray[5].trim().toUpperCase());
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new DataSubmissionException("Type of transport information is incorrect...");
         }
 
         int capacity;
         try {
             capacity = Integer.parseInt(dataArray[6].trim());
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new DataSubmissionException("Capacity information is incorrect...");
         }
-
         return new CargoTaxi(name, cost, regNumber, maxSpeed, fuelConsumption, typ, capacity);
     }
 
-    private static Transport createPassengerTransport(String[] dataArray){
+    private static Transport createPassengerTransport(String[] dataArray) {
         String name = dataArray[0].trim();
 
         int cost;
         try {
             cost = Integer.parseInt(dataArray[1].trim());
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new DataSubmissionException("Cost information is incorrect...");
         }
 
@@ -106,50 +107,41 @@ public class DownloaderParkFromFile {
         int maxSpeed;
         try {
             maxSpeed = Integer.parseInt(dataArray[3].trim());
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new DataSubmissionException("Registration number information is incorrect...");
         }
 
         double fuelConsumption;
         try {
             fuelConsumption = Double.parseDouble(dataArray[4].trim());
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new DataSubmissionException("Fuel consumption information is incorrect...");
         }
 
         TypeOfTransport typ;
         try {
             typ = TypeOfTransport.valueOf(dataArray[5].trim().toUpperCase());
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new DataSubmissionException("Type of transport information is incorrect...");
         }
 
         int capacity;
         try {
             capacity = Integer.parseInt(dataArray[6].trim());
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new DataSubmissionException("Capacity information is incorrect...");
         }
-
         return new PassengerTaxi(name, cost, regNumber, maxSpeed, fuelConsumption, typ, capacity);
     }
 
-    private static Transport getDeserializableCar(String data){
-        if (data == null){return null;}
+    private static Transport getDeserializableCar(String data) {
+        if (data == null) {
+            return null;
+        }
         String[] dataArray = data.split(",");
-        if (dataArray.length != 7) {return null;}
-
+        if (dataArray.length != 7) {
+            return null;
+        }
         return createTransport(dataArray);
     }
-
-    public static void main(String[] args) throws IOException {
-        List<Transport> list = getTaxiFromFile();
-
-        //list.stream().forEach(System.out::println);
-
-        Park park = new Park(list);
-        park.sortingTaxiParkByFuelConsumption();
-        park.printCars(park.getAllPark());
-    }
-
 }
